@@ -1,6 +1,8 @@
-As the Project Manager, I created and managed all critical project documents from initiation to closure. These documents ensured clarity, alignment, risk control, and successful delivery.
+LINK: graceotinwa.com
 
-1. Core Project Documents
+1. As the Project Manager, I created and managed all critical project documents from initiation to closure. These documents ensured clarity, alignment, risk control, and successful delivery.
+
+ Core Project Documents
 
 Project Charter: Defined the project goals, scope, stakeholders, timeline, and approval structure.
 
