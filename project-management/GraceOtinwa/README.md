@@ -3,20 +3,35 @@ As the Project Manager, I created and managed all critical project documents fro
 1. Core Project Documents
 
 Project Charter: Defined the project goals, scope, stakeholders, timeline, and approval structure.
+
 Business Requirements Document (BRD):Captured all functional and non-functional requirements for both the website and documentary.
+
 Risk Register: Identified project risks, their potential impacts, probability scores, mitigation strategies, and risk owners.
+
 Stakeholder Register:Documented all key stakeholders, their roles, influence, communication needs, and engagement strategy.
+
 Communication Plan:Outlined how project information would flow — frequency, channels, audience, and formats.
+
 Project Scope Statement: Clear in-scope and out-of-scope boundaries for the website and documentary.
+
 Work Breakdown Structure (WBS): Broke the entire project into manageable, trackable components.
+
 Project Schedule / Timeline: A detailed timeline of all tasks, phases, and milestones.
+
 RACI Matrix:Defined roles, responsibilities, accountability, and consultation structure.
+
 Requirements Traceability Matrix (RTM):Ensured every requirement from interviews and discovery sessions was captured and implemented.
+
 Production Plan (for the documentary): Included shooting schedule, interview plans, location listing, production resources, and technical setup.
+
 Change Log:Captured all requested or implemented changes and how they affected scope, cost, and timelines.
+
 Quality Assurance Plan:Defined quality expectations for video production, website design, content accuracy, and testing.
+
 Issue Log:Tracked issues encountered during filming, editing, and development, along with resolution steps.
+
 Meeting Notes & Weekly Status Reports:Provided updates on progress, blockers, decisions, and next steps.
+
 These documents collectively provided governance, clarity, and direction for the project.
 
 2. My Project Execution Approach
