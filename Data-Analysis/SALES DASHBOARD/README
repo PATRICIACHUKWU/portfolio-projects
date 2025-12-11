@@ -1,1 +1,163 @@
+SALES INSIGHT ANALYSIS PROJECT REPORT
+(From data cleaning → analysis → dashboard storytelling)
+
+This project demonstrates my ability to clean raw sales data, prepare a structured dataset for analysis, create pivot-based metrics, and design an interactive Excel dashboard that provides actionable insights for business decisions.
+1. DATA UNDERSTANDING & INITIAL CHECKS
+The dataset contained typical sales transactional fields:
+•	Order ID
+•	Order Date / Month
+•	Region
+•	Sales Representative
+•	Product Category
+•	Quantity Sold
+•	Revenue
+•	Payment Category
+•	Customer Type
+•	Sales Channel
+Before beginning analysis, the dataset required validation and cleaning.
+
+2. DATA CLEANING PROCESS (STEP-BY-STEP)
+2.1 Removed Duplicates
+•	Checked full dataset for duplicate rows using:
+o	Data → Remove Duplicates
+•	Ensured unique transactions per Order ID.
+2.2 Checked for Missing Values
+•	Ensured no blank values in:
+o	Region
+o	Sales Rep
+o	Product Category
+o	Revenue
+o	Quantity
+Any missing values were replaced using:
+•	Forward-fill for categorical fields
+•	Zero or median for numerical fields, depending on context
+2.3 Ensured Correct Data Types
+•	Converted Revenue and Quantity fields to Number.
+•	Converted Order Date to proper Date format.
+•	Extracted:
+o	Month
+o	Year
+o	Quarter
+2.4 Standardized Categories
+To avoid inconsistencies:
+•	Uniform spellings for regions (East, West, North, South)
+•	Standardized payment types (Cash, Credit Card, Bank Transfer)
+•	Cleaned customer type values (New vs Returning)
+2.5 Created Helper Columns (Where Needed)
+•	Region + Sales Rep combined field for the filter slicer.
+Formula example:
+=[@Region] & "-" & [@[Sales Rep]]
+After cleaning, the dataset was now analysis-ready.
+
+3. DATA MODEL STRUCTURE
+Because the analysis was built in Excel, I used:
+1 Main Fact Table:
+Sales_Data
+•	Transaction-level data (Revenue, Quantity, Order Date, etc.)
+1 Lookup Table:
+Date Table (optional but recommended)
+•	Contains Month Name, Month Number, Year, Quarter
+•	Ensures clean time-series analysis
+The tables were converted to Excel Tables using CTRL+T, which makes pivoting easier.
+No advanced modeling needed — Excel handles relationships automatically.
+
+4. ANALYTICAL CALCULATIONS USING PIVOT TABLES
+4.1 Revenue by Region
+Pivot table fields:
+•	Rows: Region
+•	Values: Sum of Revenue
+4.2 Payment Category Usage
+Pivot table:
+•	Rows: Payment Category
+•	Values: Count of Order ID
+4.3 Total Quantity Sold by Product Category
+Pivot:
+•	Rows: Product Category
+•	Values: Sum of Quantity
+4.4 Total Revenue by Customer Type
+Pivot:
+•	Rows: Customer Type
+•	Values: Sum of Revenue
+4.5 Revenue by Month
+Pivot:
+•	Rows: Month
+•	Values: Sum of Revenue
+•	Sort by Month Number for correct order
+
+4.6 Total Sales by Sales Rep
+Pivot:
+•	Rows: Sales Rep
+•	Values: Sum of Revenue
+4.7 Revenue by Sales Channel
+Pivot:
+•	Rows: Sales Channel
+•	Values: Sum of Revenue
+4.8 Interactive Slicers
+Added slicers for:
+•	Region
+•	Month
+•	Combined Region + Sales Rep
+These slicers control all charts and allow interactive exploration.
+
+5. DASHBOARD DESIGN & VISUALIZATION CHOICES
+Charts Used & Why
+•	Bar Chart: Revenue by region — best for comparing categories.
+•	Pie Charts: Payment method & customer type — best for proportions.
+•	Horizontal Bar: Product category quantity — easy comparison.
+•	Line Chart: Revenue by month — ideal for time trends.
+•	Column Chart: Sales rep performance — easy ranking.
+•	Doughnut Chart: Revenue by channel — clean segmentation.
+Design Elements
+•	Soft pink background for consistent branding
+•	Rounded border shapes around each chart for clarity
+•	Uniform font and chart colors for readability
+•	Slicers placed at the right for user control
+
+6. KEY INSIGHTS DISCOVERED
+1. Highest Revenue Region: NORTH
+•	North recorded the strongest performance, exceeding $1.35M.
+2. Best Sales Rep: DAVID
+•	David generated over $1.1M, outperforming others by a large margin.
+3. Customer Mix is Almost Even
+•	New customers: $2.513M
+•	Returning customers: $2.506M
+→ Showing strong customer retention.
+4. Payment Preference: CREDIT CARD
+•	345 transactions were made using credit cards
+•	Slightly more than bank transfer and cash
+5. Product Category with Largest Quantity Sold: CLOTHING
+•	Clothing reached nearly 8,000 units
+•	Followed by Furniture and Electronics
+6. Revenue Trend
+•	Revenue fluctuates monthly
+•	Peak around January and October
+7. Sales Channels
+•	Retail: 51%
+•	Online: 49%
+→ Balanced channel performance, opportunities for growth in both.
+
+7. PROJECT SUMMARY FOR PORTFOLIO
+This project demonstrates my ability to:
+✔ Clean and prepare sales data
+✔ Standardize categories, fix dates, and remove duplicates
+✔ Use pivot tables for multi-angle business analysis
+✔ Build time-series, product-level, regional, and customer-level insights
+✔ Create interactive Excel dashboards with slicers
+✔ Present insights clearly and visually
+The resulting dashboard allows stakeholders to explore:
+•	Regional revenue distribution
+•	Month-over-month revenue performance
+•	Top-performing sales reps
+•	Customer acquisition vs retention revenue
+•	Product category demand
+•	Payment method trends
+•	Sales channel revenue split
+This analysis can help business leaders make decisions on:
+•	Resource allocation
+•	Sales rep performance management
+•	Inventory planning
+•	Marketing focus
+•	Customer segmentation
+
+
 
