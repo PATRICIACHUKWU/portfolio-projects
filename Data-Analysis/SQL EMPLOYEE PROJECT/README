@@ -1,1 +1,194 @@
+SQL EMPLOYEE DATABASE ANALYSIS
+Project Overview
 
+In this project, I explored the Employees Relational Database, a classic dataset that simulates a real corporate HR system containing:
+Employee personal details
+Salaries
+Departments
+Department managers
+Job titles
+
+Using MySQL, I wrote a series of SQL queries to analyze employee demographics, hiring trends, salary data, department structures, and managerial assignments.
+The project demonstrates strong hands-on experience with data retrieval, filtering, aggregation, joins, subsetting, table manipulation, and exploratory analysis.
+
+Objectives of the Analysis
+My goal was to practice and demonstrate proficiency in:
+Filtering and retrieving records
+Pattern matching using SQL operators
+Grouping and aggregation
+Joining multiple related tables
+Modifying and cleaning database structures
+Analyzing salary distributions
+Understanding department-manager relationships
+Working with subqueries and set operators
+This report walks through each SQL technique and explains exactly what I achieved.
+
+1. Basic Data Retrieval
+I started by exploring the database structure:
+SELECT dept_no FROM departments;
+SELECT * FROM departments;
+This allowed me to view department codes and confirm the schema layout.
+
+2. Conditional Filtering (WHERE Clause)
+Filtering by First Name
+Examples:
+SELECT * FROM employees WHERE first_name = 'Elvis';
+SELECT * FROM employees WHERE first_name = 'Kellie' AND gender='f';
+→ This showed employees meeting specific conditions such as name, gender, or both.
+Using OR
+SELECT * FROM employees WHERE first_name='kellie' OR first_name='elvis';
+→ Demonstrated how to retrieve multiple conditions in one query.
+
+3. Using IN and NOT IN
+SELECT * FROM employees WHERE first_name IN ('denis','elvis');
+SELECT * FROM employees WHERE first_name NOT IN ('John','Mark','Jacob');
+→ Useful for selecting or excluding multiple values at once.
+
+4. Pattern Matching with LIKE
+I practiced extracting records based on partial text patterns.
+Examples:
+Names starting with 'Mark'
+SELECT * FROM employees WHERE first_name LIKE 'Mark%';
+Employees hired in the year 2000
+SELECT * FROM employees WHERE hire_date LIKE '%2000%';
+Employee number pattern
+SELECT * FROM employees WHERE emp_no LIKE '1000_';
+Names containing or not containing “Jack”
+SELECT * FROM employees WHERE first_name LIKE '%jack%';
+SELECT * FROM employees WHERE first_name NOT LIKE '%jack%';
+→ Showcases fluency with string matching.
+
+5. Range Filtering with BETWEEN
+SELECT * FROM salaries WHERE salary BETWEEN 66000 AND 70000;
+SELECT * FROM employees WHERE emp_no NOT BETWEEN '10004' AND '10012';
+SELECT dept_name FROM departments WHERE dept_no BETWEEN 'd003' AND 'd006';
+→ Used to find employees or departments within or outside numerical/alphabetical ranges.
+
+6. Checking for NULL Values
+SELECT dept_name FROM departments WHERE dept_no IS NOT NULL;
+→ Demonstrates understanding of NULL logic.
+
+7. Additional Conditional Practice
+Females hired after 2000:
+SELECT * FROM employees 
+WHERE hire_date >= '2000-01-01' AND gender='F';
+Salaries greater than 150k:
+SELECT * FROM salaries WHERE salary > 150000;
+
+8. DISTINCT Values
+SELECT DISTINCT gender FROM employees;
+SELECT DISTINCT hire_date FROM employees;
+→ Useful for identifying unique values and category exploration.
+
+9. Aggregation & Counting
+Number of high-value contracts:
+SELECT COUNT(*) FROM salaries WHERE salary >= 100000;
+Number of managers:
+SELECT COUNT(*) FROM dept_manager;
+
+10. Sorting (ORDER BY)
+SELECT * FROM employees ORDER BY hire_date DESC;
+→ Helps analyze hiring patterns over time.
+
+11. GROUP BY + HAVING (Advanced Filtering)
+Employees with salaries > 80k grouped by salary:
+SELECT salary, COUNT(emp_no) AS emps_with_same_salary
+FROM salaries
+WHERE salary > 80000
+GROUP BY salary
+ORDER BY salary ASC;
+
+Employees whose average salary > 120k:
+SELECT emp_no, AVG(salary) AS average_salary
+FROM salaries
+GROUP BY emp_no
+HAVING AVG(salary) > 120000;
+
+→ Shows advanced grouping, aggregation, and filtering.
+
+12. Table Structure Modifications (ALTER TABLE)
+ALTER TABLE departments_dup DROP COLUMN dept_manager;
+ALTER TABLE departments_dup CHANGE COLUMN dept_no dept_no CHAR(4) NULL;
+→ Demonstrates ability to modify database schema.
+
+13. Creating and Populating Tables
+I created a duplicate manager table:
+CREATE TABLE dept_manager_dup (...);
+INSERT INTO dept_manager_dup SELECT * FROM dept_manager;
+Inserted new rows, and deleted some:
+DELETE FROM dept_manager_dup WHERE dept_no='d001';
+→ Shows data insertion, migration, and cleanup.
+
+14. JOIN Operations (Core of Relational Analysis)
+INNER JOIN – Employee details with manager department:
+SELECT 
+    e.emp_no, e.first_name, e.last_name, dm.dept_no, e.hire_date
+FROM employees e
+JOIN dept_manager dm ON e.emp_no = dm.emp_no;
+
+LEFT JOIN – Retrieve employees even if not managers:
+SELECT 
+    e.emp_no, e.first_name, e.last_name, dm.dept_no, dm.from_date
+FROM employees e
+LEFT JOIN dept_manager dm ON e.emp_no = dm.emp_no
+WHERE e.last_name = 'Markovitch';
+
+3-Table JOIN:
+SELECT 
+    e.first_name,
+    e.last_name,
+    e.hire_date,
+    m.from_date,
+    d.dept_name
+FROM employees e
+JOIN dept_manager m ON e.emp_no = m.emp_no
+JOIN departments d ON m.dept_no = d.dept_no;
+
+4-Table JOIN (Employees, Manager, Departments, Titles)
+SELECT 
+    e.first_name,
+    e.last_name,
+    e.hire_date,
+    t.title,
+    dm.from_date AS start_date,
+    d.dept_name
+FROM employees e
+JOIN dept_manager dm ON e.emp_no = dm.emp_no
+JOIN departments d ON d.dept_no = dm.dept_no
+JOIN titles t ON t.emp_no = dm.emp_no;
+
+→ Demonstrates advanced, multi-table relational querying.
+
+15. CROSS JOIN examples
+
+Used to generate all possible combinations between tables.
+
+SELECT dm.*, d.*
+FROM departments d
+CROSS JOIN dept_manager dm
+WHERE d.dept_no = 'd009';
+
+→ Useful for pairing every manager with possible departments.
+
+16. Salary Analysis by Gender
+SELECT e.gender, AVG(s.salary) AS average_salary
+FROM employees e
+JOIN salaries s ON e.emp_no = s.emp_no
+GROUP BY gender;
+
+→ Demonstrates demographic salary comparison.
+
+⭐ KEY TAKEAWAYS & SKILLS DEMONSTRATED
+✔ SQL CRUD operations
+✔ Advanced filtering with WHERE, LIKE, BETWEEN
+✔ GROUP BY + HAVING for aggregated conditions
+✔ INNER JOIN, LEFT JOIN, CROSS JOIN
+✔ Working with NULLs
+✔ Table creation, insertion, deletion, alteration
+✔ Sorting and data ordering
+✔ Employee, salary, and department analysis
+✔ Real-world relational database navigation
+
+This project shows solid command of SQL fundamentals and intermediate-level querying techniques.
+This SQL analysis project walked through a wide range of real-world operations including data filtering, grouping, joining multiple relational tables, modifying schema structures, exploring hiring trends, analyzing salary distributions, and retrieving managerial assignments.
+The script demonstrates clear competency in relational database concepts, query optimization, and HR data exploration — skills essential for data analysis, business intelligence, and data engineering roles.
