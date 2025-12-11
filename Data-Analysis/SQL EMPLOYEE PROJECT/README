@@ -12,7 +12,7 @@ Using MySQL, I wrote a series of SQL queries to analyze employee demographics, h
 The project demonstrates strong hands-on experience with data retrieval, filtering, aggregation, joins, subsetting, table manipulation, and exploratory analysis.
 
 Objectives of the Analysis
-My goal was to practice and demonstrate proficiency in:
+My goal was to demonstrate proficiency in:
 Filtering and retrieving records
 Pattern matching using SQL operators
 Grouping and aggregation
